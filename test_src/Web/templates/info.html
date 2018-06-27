@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Profile</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static',filename='css/data_style.css') }}">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='icon.ico') }}">
+</head>
+<header>
+	<div class="container-fluid">
+		<a class="navbar-brand" href="/logout/"><img style="max-width:60px;" src="{{ url_for('static', filename='images/brand.png') }}"></a>
+	  <!-- Nav tabs -->
+	  <ul class="nav nav-tabs" role="tablist">
+		<li role="presentation" class="active"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">Info</a></li>
+		<li role="presentation"><a href="#Violation" aria-controls="Violation" role="tab" data-toggle="tab">Violation</a></li>
+		<li role="presentation"><a href="#RoadFee" aria-controls="RoadFee" role="tab" data-toggle="tab">Road Fee</a></li>
+		<li role="presentation"><a href="#Track" aria-controls="Track" role="tab" data-toggle="tab">Track</a></li>
+	  </ul>
+
+	  <!-- Tab panes -->
+	  <div class="tab-content">
+		<div role="tabpanel" class="tab-pane active" id="info">
+		<p class="container" style="top:100px; left:50px; font-size: 20px" >License Plate: {{ usr_plate }}</p>
+		<p class="container" style="left:50px; font-size: 20px" >Phone Number: {{ usrName }}</p>
+		</div>
+		<div role="tabpanel" class="tab-pane" id="Violation">
+		<table class="table-bordered" style="margin: 50px auto; width:60%;">
+			<tr>
+				<th colspan="4" class="Bigtitle" style="text-align:center" >VIOLATION</th>
+			</tr>
+			<tr>
+				<th class="timeTitle" style="text-align:center; padding-bottom:5px; padding-top: 5px">Time</th>
+				<th class="feeTitle" style="text-align:center; padding-bottom:5px; padding-top: 5px">Violation Fee</th>
+				<th class="locationTitle" style="text-align:center; padding-bottom:5px; padding-top: 5px">Location</th>
+				<th class="violationTitle" style="text-align:center; padding-bottom:5px; padding-top: 5px">Violated</th>
+			</tr>
+			{% for i in range(vl) %}
+			<tr>
+				<td class="timeData" style="padding: 5px 10px 5px">{{ vr[i][0] }}</td>
+				<td class="feeData" style="padding: 5px 10px 5px">{{ vr[i][1] }}</td>
+				<td class="locationData" style="padding: 5px 10px 5px">{{ vr[i][2] }}</td>
+				<td class="violationData" style="padding: 5px 10px 5px">{{ vr[i][3] }}</td>
+			</tr>	
+			{% endfor %}
+		</table>
+		</div>
+		<div role="tabpanel" class="tab-pane" id="RoadFee">
+		<table class="table-bordered" style="margin: 50px auto; width:60%;">
+			<tr>
+				<th colspan="3" class="Bigtitle" style="text-align:center">ROAD FEE</th>
+			</tr>
+			<tr>
+				<th class="timeTitle" style="text-align:center; padding-bottom:5px; padding-top: 5px">Time</th>
+				<th class="feeTitle" style="text-align:center; padding-bottom:5px; padding-top: 5px">Fee</th>
+				<th class="locationTitle" style="text-align:center; padding-bottom:5px; padding-top: 5px">Location</th>
+			</tr>
+			{% for i in range(rfl) %}
+			<tr>
+				<td class="timeData" style="padding: 5px 10px 5px">{{ rfr[i][0] }}</td>
+				<td class="feeData" style="padding: 5px 10px 5px">{{ rfr[i][1] }}</td>
+				<td class="locationData" style="padding: 5px 10px 5px">{{ rfr[i][2] }}</td>
+				
+			</tr>
+			{% endfor %}			
+		</table>
+		</div>
+		<div role="tabpanel" class="tab-pane" id="Track">
+		<table class="table-bordered" style="margin: 50px auto; width:60%;">
+			<tr>
+				<th colspan="2" class="Bigtitle" style="text-align:center">TRACK</th>
+			</tr>
+			<tr>
+				<th class="timeTitle" style="text-align:center; padding-bottom:5px; padding-top: 5px">Time</th>
+				<th class="locationTitle" style="text-align:center; padding-bottom:5px; padding-top: 5px">Location</th>
+			</tr>
+			{% for i in range(tl) %}
+			<tr>
+				<td class="timeData" style="padding: 5px 10px 5px">{{ tr[i][0] }}</td>
+				<td class="locationData" style="padding: 5px 10px 5px">{{ tr[i][1] }}</td>
+			</tr>	
+			{% endfor %}
+		</table>
+		</div>
+	  </div>
+	</div>
+</header>
+<body>
+	<script src="{{ url_for('static', filename='js/jquery-3.1.0.min.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>	
+</body>
+</html>

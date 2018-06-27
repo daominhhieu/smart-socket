@@ -1,0 +1,39 @@
+
+<!--suppress ALL -->
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello EEIT 2015 VGU!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+</head>
+<body>
+
+    <div class="control">
+        <input class="input" type="text" placeholder="User Name" id="username" value = "">
+        <input class="input" type="password" placeholder="Password" id="password" value = "">
+
+        <button class="button" onclick="post_request()">Sign in</button>
+    </div>
+
+
+
+<script>
+    function loadInfo() {
+        var xhttp = new XMLHttpRequest();
+        var xhhtp_mainpage = new XMLHttpRequest();
+
+        xhhtp_mainpage.open("POST", "http://localhost:8080/login/", true);
+
+        xhttp.open("POST", "http://localhost:8081", true);
+        xhttp.setRequestHeader("Content-type", "text/plain");
+
+        xhhtp_mainpage.send();
+        xhttp.send("u="+"sdfasdf"+"&p="+"sdfsdfasdf");
+
+        location = location;
+    }
+</script>
+</body>
+</html>

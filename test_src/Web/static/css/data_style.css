@@ -1,0 +1,34 @@
+.Bigtitle{
+	font-family: Arial;
+	color:white;
+	background-color:#00626A;
+	font-size:24px;
+	padding-bottom:50px;
+	padding-top: 50px;
+}
+.timeTitle{
+	background-color:#D1FF00;
+	width:20%;
+}
+.timeData{
+	background-color:#ECFF98;  
+}
+.feeTitle{
+	background-color:#FFF300;
+	width:20%;
+}
+.feeData{
+	background-color:#FFFA9F;
+}
+.locationTitle{
+	background-color:#FFB900;
+}
+.locationData{
+	background-color:#FFE193;
+}
+.violationTitle{
+	background-color:#FF0000;
+}
+.violationData{
+	background-color:#FF9E9E;
+}

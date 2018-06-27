@@ -1,0 +1,20 @@
+{% extends "index.html" %}
+{% block sign_up %}
+	<h1>Sign up!</h1>
+	<form method="post">
+		  <div class="form-group">
+			<input type="text" class="form-control" name="sign_phone_number" placeholder="Phone Number" value="{{request.form.sign_phone_number}}">
+		  </div>
+		  <div class="form-group">
+			<input type="text" class="form-control" name="license_plate" placeholder="License Plate" value="{{request.form.license_plate}}">
+		  </div>
+		  <div class="form-group">
+			<input type="password" class="form-control" name="sign_password" placeholder="Password" value="{{request.form.sign_password}}">
+		  </div>
+		  <div class="form-group">
+			<input type="password" class="form-control" name="retype_password" placeholder="Retype Password" value="{{request.form.retype_password}}">
+		  </div>
+		  <input type="submit" class="btn btn-default" value="Sign up">
+	</form>
+</div>
+{% endblock %}

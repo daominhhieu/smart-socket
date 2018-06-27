@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tele project</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <!-- Bulma Version 0.7.1-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css" />
+</head>
+
+<body>
+<section class="hero is-primary is-fullheight">
+    <div class="hero-head">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a class="navbar-item">
+                        <img src="https://bulma.io/images/bulma-type-white.png" alt="Logo">
+                    </a>
+                    <span class="navbar-burger burger" data-target="navbarMenuHeroA">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+                </div>
+                <div id="navbarMenuHeroA" class="navbar-menu">
+                    <div class="navbar-end">
+                        <a class="navbar-item ">
+                            Home
+                        </a>
+                        <a class="navbar-item">
+                            Documentation
+                        </a>
+                        <a class="navbar-item" href="#About">
+                            About
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="column is-4 is-offset-4">
+                <h3 class="title strong ">Login</h3>
+                <p class="subtitle has-text-grey ">Please login to proceed.</p>
+                <div class="box">
+                    <figure class="Logo">
+                        <img src="D:\teleproject\bulma-start-master\made-with-bulma.png">
+                    </figure>
+                    <form>
+                        <div class="field">
+                            <div class="control has-icons-left has-icons-right">
+                                <input class="input is-large " type="email" placeholder="Your Email/Username" autofocus="" id="username">
+                                <span class="icon is-left">
+                                          <i class="fas fa-envelope"></i>
+                                      </span>
+                                <span class="icon is-right">
+                                          <i class="fas fa-check"></i>
+                                      </span>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <div class="control has-icons-left has-icons-right">
+                                <input class="input is-large " type="password" placeholder="Your Password" id="password">
+                                <span class="icon is-left">
+                                        <i class="fas fa-lock"></i>
+                                    </span>
+                                <span class="icon is-right">
+                                        <i class="fas fa-check"></i>
+                                    </span>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                Remember me
+                            </label>
+                        </div>
+                        <button class="button is-block is-info is-large is-fullwidth">Login</button>
+                    </form>
+                </div>
+                <p class="box active has-text-dark">
+                    <a href="D:\teleproject\signup.html"> <button class="button is-block is-info is-medium">Sign Up</button> </a> <!--Sign up-->
+                    <a href="../"> <button class="button is-block is-info is-medium">Forgot Password</button> </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<script async type="text/javascript" src="../js/bulma.js" defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+<section id="About" class="title is-12 message-body has-background-bis has-text-centered ">
+    <footer> Created by Nam </footer>
+    <p>fasdfadsfadsf fasdfasdfasd </p>
+    <p>asdfb asvsadas vadsfasdf asd </p>
+</section>
+
+
+<script>
+    function loadInfo() {
+        var xhttp = new XMLHttpRequest();
+        var xhhtp_mainpage_POST = new XMLHttpRequest();
+        var username = document.getElementById("username").value.toString();
+        var password = document.getElementById("password").value.toString();
+
+        xhhtp_mainpage_POST.open("POST", "http://localhost:8080/login/", true);
+
+        xhttp.open("POST", "http://localhost:8081", true);
+        xhttp.setRequestHeader("Content-type", "text/plain");
+
+        xhhtp_mainpage_POST.send();
+        xhttp.send("u="+username+"&p="+password);
+        location = location;
+    }
+</script>
+
+
+</body>
+
+</html>

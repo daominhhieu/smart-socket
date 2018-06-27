@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Login</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='icon.ico') }}">
+</head>
+<header>
+	<div class="container-fluid">
+		<div class="navbar-header">
+		  <a class="navbar-brand" href="/login/"><img style="max-width:60px;" src="{{ url_for('static', filename='images/brand.png') }}"></a>
+		</div>
+		<form class="navbar-form navbar-right" method="post">
+		  <div class="form-group">
+			<input type="text" class="form-control" name="phone_number" placeholder="Phone Number" value="{{request.form.phone_number}}">
+		  </div>
+		  <div class="form-group">
+			<input type="password" class="form-control" name="password" placeholder="Password" value="{{request.form.password}}">
+		  </div>
+		  <input type="submit" class="btn btn-default" value="Login">
+		</form>
+		<a class="btn btn-default navbar-right navbar-btn" href="/signup/" role="button">Sign up!</a>
+	</div>
+	<p class="container" style="margin-right: 10px; max-width: 300px; color:red" >{{ error }}</p>
+</header>
+<body>
+	<div class="jumbotron" style="margin-top: 100px; margin-left: 100px; border-radius: 10px; max-width: 500px;">
+	<div class="container">
+	{% block sign_up %}
+	{% block page_not_found %}
+	  <h1>About</h1>
+	  <p>This is EEIT2015 of VGU student's project. CODE NAME = /TNMS/</p>
+	{% endblock %}
+	  <p><a class="btn btn-primary btn-lg" href="/login/" role="button">Refresh</a></p>
+	{% endblock %}
+	</div>
+	</div>
+	<script src="{{ url_for('static', filename='js/jquery-3.1.0.min.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>	
+</body>
+</html>
