@@ -5,7 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hello EEIT 2015 VGU!</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+
+    <link rel="stylesheet" href="https://github.com/daominhhieu/TNMS/blob/master/Web/static/css/bootstrap.min.css.map">
+
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 </head>
 <body>
@@ -24,13 +26,13 @@
         var xhttp = new XMLHttpRequest();
         var xhhtp_mainpage = new XMLHttpRequest();
 
-        xhhtp_mainpage.open("POST", "http://localhost:8080/login/", true);
+        xhhtp_mainpage.open("POST", "http://localhost:8080/", true);
 
-        xhttp.open("POST", "http://localhost:8081", true);
+        xhttp.open("POST", "http://localhost:8082", true);
         xhttp.setRequestHeader("Content-type", "text/plain");
 
         xhhtp_mainpage.send();
-        xhttp.send("u="+"sdfasdf"+"&p="+"sdfsdfasdf");
+        xhttp.send("button1=on&button2=off");
 
         location = location;
     }

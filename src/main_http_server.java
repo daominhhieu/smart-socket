@@ -20,6 +20,7 @@ public class main_http_server {
         server.createContext("/login/", new login());
         server.createContext("/signup/", new signup());
         server.createContext("/404/", new Error());
+        server.createContext("/css/bulma.min.css", new upload_css());
         server.setExecutor(Executors.newCachedThreadPool());
         server.start();
 

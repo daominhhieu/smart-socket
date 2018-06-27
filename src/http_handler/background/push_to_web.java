@@ -15,20 +15,20 @@ public class push_to_web {
     }
 
     public void page(int dir) throws IOException {
-        main_structure(new jsoup_distributor().page_doc_list().get(dir).html());
+        main_structure(new jsoup_distributor().page_doc_list().get(dir).html(),"text/html");
     }
 
     public void error(String error_message, String error_type, int dir) throws IOException {
         Document doc = new jsoup_distributor().page_doc_list().get(dir);
         Document err = new jsoup_distributor().error_doc(doc, error_message, error_type);
-        main_structure(err.html());
+        main_structure(err.html(), "text/html");
 
     }
 
-    private void main_structure(String content) throws IOException {
+    public void main_structure(String content, String content_type) throws IOException {
         BufferedWriter html_out = new BufferedWriter(new OutputStreamWriter(e.getResponseBody()));
 
-        e.getResponseHeaders().set("Content-Type", "text/html");
+        e.getResponseHeaders().set("Content-Type", content_type);
         e.sendResponseHeaders(200, 0);
 
         html_out.write(content);
