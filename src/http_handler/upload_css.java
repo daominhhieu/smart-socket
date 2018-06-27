@@ -12,7 +12,7 @@ public class upload_css implements HttpHandler {
         push_to_web p = new push_to_web(httpExchange);
         String requestMethod = httpExchange.getRequestMethod();
         if (requestMethod.equalsIgnoreCase("GET")){
-            p.main_structure(new File);
+            p.main_structure(new Filewerwewerwer);
         }
 
         if (requestMethod.equalsIgnoreCase("POST")) {
