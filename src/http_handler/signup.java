@@ -31,7 +31,6 @@ public class signup implements HttpHandler {
         String requestMethod = httpExchange.getRequestMethod();
 
         if (requestMethod.equalsIgnoreCase("GET")){
-            System.out.println("here");
             if(successful_signup_flag!=null){
                 p.error(successful_signup_flag, "danger", 3);
             }else{
@@ -57,12 +56,13 @@ public class signup implements HttpHandler {
 
         BufferedReader data_collect_buffer = new BufferedReader(new InputStreamReader(gate_Soc.getInputStream()));
         String data = null;
+        upload_to_database u = new upload_to_database();
 
         while(true){
             try{
                 data = data_collect_buffer.readLine();
-                if(data.contains("&sp")){
-                    check_data(d.split(data,"su=","&sp="));
+                if(data.chars().filter(ch -> ch == '&').count() == 2){
+                    successful_signup_flag = u.upload_data(u.user_db_file_name,data,"signup");
                     break;
                 }
             }catch(NullPointerException e){
@@ -75,25 +75,4 @@ public class signup implements HttpHandler {
         data_collect_buffer.close();
         gate_Soc.close();
     }
-
-    private void check_data(String[] s) throws IOException {
-        if(s.length == 2){
-            if(!(s[0].equals("") || s[1].equals(""))){
-                System.out.println(s[0]);
-                System.out.println(s[1]);
-
-
-                successful_signup_flag = new upload_to_database().login(s[0],s[1]);
-
-            }else {
-                successful_signup_flag = "Please input S O M E   T H I N G";
-                System.out.println("Please input something!!");
-            }
-        }
-        else{
-            System.out.println(" Error");
-        }
-
-    }
-
 }

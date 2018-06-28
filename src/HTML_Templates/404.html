@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hello EEIT 2015 VGU!</title>
 
-    <link rel="stylesheet" href="https://raw.githubusercontent.com/daominhhieu/smart-socket/master/src/HTML_Templates/css/bulma.min.css">
+    <link rel="stylesheet" href="/base_css/">
 
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <script type="text/javascript" src="/js/"></script>
 </head>
 <body>
 
@@ -16,26 +17,9 @@
         <input class="input" type="text" placeholder="User Name" id="username" value = "">
         <input class="input" type="password" placeholder="Password" id="password" value = "">
 
-        <button class="button" onclick="post_request()">Sign in</button>
+        <button class="button" onclick="test_btn()">Sign in</button>
+        <!--onclick="post_request(document.getElementById('username').value, document.getElementById('password').value, '8081', '/login/')"-->
     </div>
 
-
-
-<script>
-    function loadInfo() {
-        var xhttp = new XMLHttpRequest();
-        var xhhtp_mainpage = new XMLHttpRequest();
-
-        xhhtp_mainpage.open("POST", "http://localhost:8080/", true);
-
-        xhttp.open("POST", "http://localhost:8082", true);
-        xhttp.setRequestHeader("Content-type", "text/plain");
-
-        xhhtp_mainpage.send();
-        xhttp.send("button1=on&button2=off");
-
-        location = location;
-    }
-</script>
 </body>
 </html>

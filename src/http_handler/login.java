@@ -3,12 +3,14 @@ package http_handler;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import http_handler.background.push_to_web;
+import http_handler.background.upload_to_database;
 
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
 public class login implements HttpHandler {
+    private String successful_login_flag = null;
     private ServerSocket Login_Gate;
     {
         try {
@@ -23,12 +25,16 @@ public class login implements HttpHandler {
         String requestMethod = httpExchange.getRequestMethod();
 
         if (requestMethod.equalsIgnoreCase("GET")){
-            System.out.println("Here!");
-            p.page(0);
+            if(successful_login_flag!=null){
+                p.error(successful_login_flag, "danger", 3);
+            }else{
+                p.page(3);
+            }
+            successful_login_flag = null;
         }
 
         if (requestMethod.equalsIgnoreCase("POST")) {
-
+            System.out.println("Here!");
             push_data(p);
         }
     }
@@ -40,14 +46,17 @@ public class login implements HttpHandler {
 
         System.out.println("Collecting....");
 
+        long count = 0;
+
         BufferedReader data_collect_buffer = new BufferedReader(new InputStreamReader(gate_Soc.getInputStream()));
         String data = null;
+        upload_to_database u = new upload_to_database();
 
         while(true){
             try{
                 data = data_collect_buffer.readLine();
-                if(data.contains("&p")){
-                    checkdata(split(data),err);
+                if(data.chars().filter(ch -> ch == '&').count() == 2){
+                    successful_login_flag = u.upload_data(u.user_db_file_name,data,"login");
                     break;
                 }
             }catch(NullPointerException e){
@@ -60,47 +69,4 @@ public class login implements HttpHandler {
         data_collect_buffer.close();
         gate_Soc.close();
     }
-
-
-    //Checking login information Might wanna put some more condition in the future !!!!!!
-    private void checkdata(String[] s, push_to_web error){
-        if(s.length == 2){
-            if(!(s[0].equals("") || s[1].equals(""))){
-                System.out.println(s[0]);
-                System.out.println(s[1]);
-            }else {
-
-                System.out.println("Please input something!!");
-            }
-        }
-        else{
-            System.out.println(" Error");
-        }
-    }
-
-    private String[] split(String in){
-
-        String Password =null;
-        String Username =null;
-
-        if(in.indexOf("&p=")!=-1 && in.indexOf("u=")!=-1){
-            int len_of_username = in.indexOf("&p=") - in.indexOf("u=") - 2;
-            char[] testdata1 = new char[len_of_username];
-
-            in.getChars(in.indexOf("u=")+2,in.indexOf("&p="),testdata1,0);
-            Password = String.copyValueOf(testdata1);
-
-
-            int len_testdata2 = in.length() - in.indexOf("p=") - 2;
-            char[] testdata2 = new char[len_testdata2];
-
-            in.getChars(in.indexOf("p=")+2,in.length(),testdata2,0);
-            Username = String.copyValueOf(testdata2);
-
-        }else{
-            System.out.println("Message Invalid");
-        }
-        return new String[]{Password, Username};
-    }
-
 }

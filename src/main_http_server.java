@@ -2,6 +2,7 @@
 import com.sun.net.httpserver.HttpServer;
 import http_handler.*;
 import http_handler.Error;
+import http_handler.upload_js;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -20,7 +21,8 @@ public class main_http_server {
         server.createContext("/login/", new login());
         server.createContext("/signup/", new signup());
         server.createContext("/404/", new Error());
-        server.createContext("/css/bulma.min.css", new upload_css());
+        server.createContext("/base_css/", new base_css());
+        server.createContext("/js/", new upload_js());
         server.setExecutor(Executors.newCachedThreadPool());
         server.start();
 

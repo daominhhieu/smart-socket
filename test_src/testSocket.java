@@ -1,35 +1,37 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.util.List;
-import java.util.Scanner;
+import org.sqlite.SQLiteException;
 
+import java.io.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 public class testSocket {
     public static void main(String[] args) throws IOException {
+        Connection c = null;
+        Statement stmt = null;
+        int a = 0;
 
-        System.out.println("Waiting for socket");
+        try{
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:src/Database/socket_database.db");
+            System.out.println("Opened database successfully");
+            c.setAutoCommit(false);
 
-        ServerSocket svr = new ServerSocket(8080);
-        Socket a = svr.accept();
+            stmt = c.createStatement();
+            String sql = "INSERT INTO button_1 (STATE) " +
+                    "VALUES (2);";
+            stmt.executeUpdate(sql);
 
-        String data = null;
+            c.commit();
 
-        System.out.println("Connected! to " + a.getRemoteSocketAddress());
-        BufferedReader bf = new BufferedReader(new InputStreamReader(a.getInputStream()));
+            stmt.close();
+            c.close();
 
-        while(true){
-            try{
-                data = bf.readLine();
-                if(data.contains("&p")){
 
-                }
-            }catch(NullPointerException e){
-                a.close();
-                a = svr.accept();
-                bf = new BufferedReader(new InputStreamReader(a.getInputStream()));
-            }
+        }catch(java.sql.SQLException e){
+            System.err.println("loi roi dit me may");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
     }
 }

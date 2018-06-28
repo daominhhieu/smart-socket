@@ -18,11 +18,8 @@ public class mainpage implements HttpHandler {
             p.page(0);
         }
         if (requestMethod.equalsIgnoreCase("POST")){
-            post();
-        }
 
-    }
-    private void post() throws IOException{
+        }
 
     }
 }
