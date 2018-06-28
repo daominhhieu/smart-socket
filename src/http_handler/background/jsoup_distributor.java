@@ -13,11 +13,8 @@ import java.util.Iterator;
 //This class is for providing convenient way of reference html files
 public class jsoup_distributor{
 
-    private String[] pages = {"404", "main", "login","signup", "about","error_message"};// the order of html files implemented
+    private String[] pages = {"404", "index", "login","signup", "about","error_message", "socket"};// the order of html files implemented
     private String[] outline_directory = {"src/HTML_Templates/", ".html"};
-
-    public static String invalid_username = "invalid username";
-    public static String invalid_pasword = "invalid password";
 
 
     // This method is for generating a list of html files path for later implemented purpose

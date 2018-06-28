@@ -1,152 +1,295 @@
 <!DOCTYPE html>
 <html>
+<style>
+#message {
+    display:none;
+    color: #000;
+    position: relative;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+#message p {
+    padding: 10px 35px;
+    font-size: 18px;
+}
+#message1 {
+    display:none;
+    color: #000;
+    position: relative;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+#message1 p {
+    padding: 10px 35px;
+    font-size: 18px;
+}
+
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+    color: green;
+}
+
+.valid:before {
+    position: relative;
+    left: -35px;
+    content: "✔";
+}
+
+/* Add a red text color and an "x" when the requirements are wrong */
+.invalid {
+    color: red;
+}
+
+.invalid:before {
+    position: relative;
+    left: -35px;
+    content: "✖";
+}
+
+
+</style>
+
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tele project</title>
 
-    <title>Signup</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+      <link rel="stylesheet" href="/signup_css/" />
 </head>
-<style>
-body {font-family: Arial, Helvetica, sans-serif;}
-* {box-sizing: border-box}
 
-/* Full-width input fields */
-input[type=text], input[type=password] {
-    width: 100%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
-    display: inline-block;
-    border: none;
-    background: #f1f1f1;
-}
-
-input[type=text]:focus, input[type=password]:focus {
-    background-color: #ddd;
-    outline: none;
-}
-
-hr {
-    border: 1px solid #f1f1f1;
-    margin-bottom: 25px;
-}
-
-/* Set a style for all buttons */
-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    opacity: 0.9;
-}
-
-button:hover {
-    opacity:1;
-}
-
-/* Extra styles for the cancel button */
-.cancelbtn {
-    padding: 14px 20px;
-    background-color: #f44336;
-}
-
-/* Float cancel and signup buttons and add an equal width */
-.cancelbtn, .signupbtn {
-  float: left;
-  width: 50%;
-}
-
-/* Add padding to container elements */
-.container {
-    padding: 16px;
-}
-
-/* Clear floats */
-.clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
-}
-
-/* Change styles for cancel button and signup button on extra small screens */
-@media screen and (max-width: 300px) {
-    .cancelbtn, .signupbtn {
-       width: 100%;
-    }
-}
-</style>
 <body>
+    <section class="hero is-primary is-bold is-fullheight has-text-white ">
+      <div class="hero-head">
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item">
 
-<form style="border:1px solid #ccc">
-  <div class="container">
-      <section class="section">
-          <div class="container">
-              <h1 class="title">
-                  Signup up
-              </h1>
-              <p class="subtitle">
-                  <strong>Smart Socket</strong>!
-              </p>
+          </a>
+          <span class="navbar-burger burger" data-target="navbarMenuHeroA">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </div>
+        <div id="navbarMenuHeroA" class="subtitle navbar-menu">
+          <div class="navbar-end">
+            <a class="navbar-item ">
+              Home
+            </a>
+            <a class="navbar-item " href="">
+              Login
+            </a>
+            <a class="navbar-item " href="">
+              Sign Up
+            </a>
+            <a class="navbar-item" href="#About">
+              About
+            </a>
           </div>
-      </section>
-
-    <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required id="email">
-
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" id="psw" required>
-
-    <label for="psw-repeat"><b>Repeat Password</b></label>
-    <input type="password" placeholder="Repeat Password" id="psw-repeat" required >
-
-    <label>
-      <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px">
-    </label>
-
-    <div class="clearfix">
-      <button type="button" class="cancelbtn" onclick="loadInfo()">Cancel</button>
-      <button class="signupbtn" id="submit_btn">Sign Up</button>
-    </div>
+        </div>
+      </div>
+    </nav>
   </div>
-</form>
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <div class="column is-4 is-offset-4">
+                    <h3 class="title strong ">Sign Up</h3>
 
-<div id="test">
+                    <div class="box">
+                        <form>
+                            <div class="field">
+                                <div class="control has-icons-left has-icons-right">
+                                    <input class="input is-large" type="email" placeholder="Email" autofocus="" id="email" >
+                                      <span class="icon is-left">
+                                          <i class="fas fa-envelope"></i>
+                                      </span>
+                                      <span class="icon is-right">
+                                          <i class="fas fa-check"></i>
+                                      </span>
+                                </div>
+                            </div>
 
-</div>
 
-<script>
-    function loadInfo() {
-        var xhttp = new XMLHttpRequest();
-        var xhhtp_mainpage = new XMLHttpRequest();
-        var username = document.getElementById("email").value.toString();
-        var password = document.getElementById("psw").value;
-        var password_repeat = document.getElementById("psw-repeat").value;
+                            <div class="field">
+                                <div class="control has-icons-left has-icons-right ">
+                                    <input class="input is-large " type="password" placeholder="Password" id="psw" name="psw"  required>
+                                    <span class="icon is-left">
+                                        <i class="fas fa-lock"></i>
+                                    </span>
+                                    <span class="icon is-right">
+                                        <i class="fas fa-check"></i>
+                                    </span>
+                                </div>
+                            </div>
 
-        if(password != password_repeat){
-            document.getElementById("test").insertAdjacentHTML('afterend','<div class= "message is-danger" >' +
-                '<div class="message-header">Password not match</div>' +
-                '</div>');
-        }else{
-            xhhtp_mainpage.open("GET", "http://localhost:8080/signup/", true);
+                            <div class="field">
+                                <div class="control has-icons-left has-icons-right ">
+                                    <input class="input is-large " type="password" placeholder="Repeat Password" id="psw-repeat" name="psw-repeat" required>
+                                    <span class="icon is-left">
+                                        <i class="fas fa-lock"></i>
+                                    </span>
+                                    <span class="icon is-right">
+                                        <i class="fas fa-check"></i>
+                                    </span>
+                                </div>
+                            </div>
 
-            xhttp.open("POST", "http://localhost:8082", true);
-            xhttp.setRequestHeader("Content-type", "text/plain");
+                            <div class="field">
+                                <label class="checkbox">
+                                    <input type="checkbox">
+                                      Remember me
+                                </label>
+                            </div>
+                                <button class="button is-block is-focused is-warning is-large is-fullwidth " onclick="loadInfo()">Submit</button>&nbsp;
+                            <a href="signup.html">
+                                <button class="button is-block is-success is-bold is-focused is-fullwidth is-info is-large">Cancel</button> </a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <!----------------------------------------------------------------------------------------->
+            <div id="message">
+              <h3>Password must contain the following:</h3>
+              <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+              <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+              <p id="number" class="invalid">A <b>number</b></p>
+              <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+            </div>
 
-            xhhtp_mainpage.send();
-            xhttp.send("su="+username+"&sp="+password);
 
-            location = location;
-        }
+            <div id="message1">
+              <h3>Repeat Password must match the Password</h3>
+              <p id="match"  class="invalid"><b>Match</b></p>
+            </div>
 
+
+    </section>
+
+    <script>
+    var myInput = document.getElementById("psw");
+    var nam123 = document.getElementById("psw-repeat");
+    var letter = document.getElementById("letter");
+    var capital = document.getElementById("capital");
+    var number = document.getElementById("number");
+    var length = document.getElementById("length");
+
+    // When the user clicks on the password field, show the message box
+    myInput.onfocus = function() {
+        document.getElementById("message").style.display = "block";
     }
 
-</script>
+    // When the user clicks outside of the password field, hide the message box
+    myInput.onblur = function() {
+        document.getElementById("message").style.display = "none";
+    }
 
+    // When the user starts to type something inside the password field
+    myInput.onkeyup = function() {
+      // Validate lowercase letters
+      var lowerCaseLetters = /[a-z]/g;
+      if(myInput.value.match(lowerCaseLetters)) {
+        letter.classList.remove("invalid");
+        letter.classList.add("valid");
+      } else {
+        letter.classList.remove("valid");
+        letter.classList.add("invalid");
+      }
+
+      // Validate capital letters
+      var upperCaseLetters = /[A-Z]/g;
+      if(myInput.value.match(upperCaseLetters)) {
+        capital.classList.remove("invalid");
+        capital.classList.add("valid");
+      } else {
+        capital.classList.remove("valid");
+        capital.classList.add("invalid");
+      }
+
+      // Validate numbers
+      var numbers = /[0-9]/g;
+      if(myInput.value.match(numbers)) {
+        number.classList.remove("invalid");
+        number.classList.add("valid");
+      } else {
+        number.classList.remove("valid");
+        number.classList.add("invalid");
+      }
+
+      // Validate length
+      if(myInput.value.length >= 8) {
+        length.classList.remove("invalid");
+        length.classList.add("valid");
+      } else {
+        length.classList.remove("valid");
+        length.classList.add("invalid");
+      }
+    }
+
+
+
+
+
+
+
+
+    /*fasdfasfadsfaaaaaaaaaaaa*/
+
+      nam123.onfocus = function() {
+        document.getElementById("message1").style.display = "block";
+    }
+
+    // When the user clicks outside of the password field, hide the message box
+      nam123.onblur = function() {
+        document.getElementById("message1").style.display = "none";
+    }
+
+
+      nam123.onkeyup = function() {
+
+    if(nam123.value.toString() == myInput.value.toString())
+    {
+      match.classList.remove("invalid");
+      match.classList.add("valid");
+    } else {
+      match.classList.remove("valid");
+      match.classList.add("invalid");
+    }
+}
+
+function loadInfo() {
+    var xhttp = new XMLHttpRequest();
+    var xhhtp_mainpage = new XMLHttpRequest();
+    var username = document.getElementById("email").value.toString();
+    var password = document.getElementById("psw").value;
+    var password_repeat = document.getElementById("psw-repeat").value;
+    xhhtp_mainpage.open("GET", "http://localhost:8080/signup/", true);
+
+    xhttp.open("POST", "http://localhost:8082", true);
+    xhttp.setRequestHeader("Content-type", "text/plain");
+
+    xhhtp_mainpage.send();
+    xhttp.send("su="+username+"&sp="+password);
+
+    location = location;
+  }
+
+
+
+    </script>
+
+
+    </section>
 </body>
+
 </html>

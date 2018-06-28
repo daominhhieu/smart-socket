@@ -26,9 +26,9 @@ public class login implements HttpHandler {
 
         if (requestMethod.equalsIgnoreCase("GET")){
             if(successful_login_flag!=null){
-                p.error(successful_login_flag, "danger", 3);
+                p.error(successful_login_flag, "danger", 2);
             }else{
-                p.page(3);
+                p.page(2);
             }
             successful_login_flag = null;
         }
