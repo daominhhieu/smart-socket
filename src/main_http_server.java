@@ -21,8 +21,6 @@ public class main_http_server {
         server.createContext("/login/", new login());
         server.createContext("/signup/", new signup());
         server.createContext("/404/", new Error());
-        server.createContext("/login_css/", new login_css());
-        server.createContext("/signup_css/", new signup_css());
         server.createContext("/js/", new upload_js());
         server.setExecutor(Executors.newCachedThreadPool());
         server.start();

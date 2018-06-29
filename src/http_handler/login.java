@@ -26,9 +26,10 @@ public class login implements HttpHandler {
 
         if (requestMethod.equalsIgnoreCase("GET")){
             if(successful_login_flag!=null){
-                p.error(successful_login_flag, "danger", 2);
+                System.out.println(successful_login_flag);
+                p.error(successful_login_flag, "danger", 1);
             }else{
-                p.page(2);
+                p.page(1);
             }
             successful_login_flag = null;
         }
@@ -55,7 +56,7 @@ public class login implements HttpHandler {
         while(true){
             try{
                 data = data_collect_buffer.readLine();
-                if(data.chars().filter(ch -> ch == '&').count() == 2){
+                if(data.chars().filter(ch -> ch == '&').count() == 1){
                     successful_login_flag = u.upload_data(u.user_db_file_name,data,"login");
                     break;
                 }

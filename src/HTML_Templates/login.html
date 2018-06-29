@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
     <!-- Bulma Version 0.7.1-->
 
-      <link rel="stylesheet" href="/login_css/" />
+      <link rel="stylesheet" href="https://storage.googleapis.com/teleproject/login.css" />
 </head>
 
 <body>
@@ -34,16 +34,16 @@
         </div>
         <div id="navbarMenuHeroA" class="subtitle navbar-menu">
           <div class="navbar-end">
-            <a class="navbar-item ">
+            <a class="navbar-item " href="/">
               Home
             </a>
-            <a class="navbar-item " href="">
+            <a class="navbar-item " href="/login/">
               Login
             </a>
-            <a class="navbar-item" href="">
-              Documentation
+            <a class="navbar-item" href="/signup/">
+              Sign Up
             </a>
-            <a class="navbar-item" href="#About">
+            <a class="navbar-item" href="/">
               About
             </a>
           </div>
@@ -57,13 +57,10 @@
                     <h3 class="title strong ">Login</h3>
 
                     <div class="box">
-                        <figure class="Logo">
-                            <img src="D:\teleproject\bulma-start-master\made-with-bulma.png">        <!--Add imame-->
-                        </figure>
                         <form>
                             <div class="field">
                                 <div class="control has-icons-left has-icons-right">
-                                    <input class="input is-large" type="email" placeholder="Your Email" autofocus="" >
+                                    <input class="input is-large" type="text" placeholder="Your Email" autofocus="" id="email">
                                       <span class="icon is-left">
                                           <i class="fas fa-envelope"></i>
                                       </span>
@@ -76,7 +73,7 @@
 
                             <div class="field">
                                 <div class="control has-icons-left has-icons-right ">
-                                    <input class="input is-large " type="password" placeholder="Your Password">
+                                    <input class="input is-large " type="password" placeholder="Your Password" id="password">
                                     <span class="icon is-left">
                                         <i class="fas fa-lock"></i>
                                     </span>
@@ -91,9 +88,9 @@
                                       Remember me
                                 </label>
                             </div>
-                                <button class="button is-block is-focused is-warning is-large is-fullwidth ">Login</button>&nbsp;
-                            <a href="signup.html">
-                                <button  class="button is-focused is-success is-fullwidth is-info is-large">Sign Up</button> </a>  <!--LOGIN-->
+                                <button class="button is-block is-focused is-warning is-large is-fullwidth " onclick="loadInfo()">Login</button>&nbsp;
+
+                                <a  class="button is-focused is-success is-fullwidth is-info is-large" href="/signup/">Sign Up</a> <!--LOGIN-->
                         </form>
                     </div>
                 </div>
@@ -103,24 +100,23 @@
 
 
     </section>
-    <script src="bulma-switch.min.css"></script>
 
-    <script async type="text/javascript" src="../js/bulma.js" defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js" src="bulma-switch.sass">
+    <script>
 
 
     function loadInfo() {
         var xhttp = new XMLHttpRequest();
-        var xhhtp_mainpage_POST = new XMLHttpRequest();
-        var username = document.getElementById("username").value.toString();
+        var xhhtp_login = new XMLHttpRequest();
+        var email = document.getElementById("email").value.toString();
         var password = document.getElementById("password").value.toString();
 
-        xhhtp_mainpage_POST.open("POST", "http://localhost:8080/login/", true);
+        xhhtp_login.open("POST", "http://localhost:8080/login/", true);
 
         xhttp.open("POST", "http://localhost:8081", true);
         xhttp.setRequestHeader("Content-type", "text/plain");
 
-        xhhtp_mainpage_POST.send();
-        xhttp.send("u="+username+"&p="+password);
+        xhhtp_login.send();
+        xhttp.send(email+"&"+password);
         location = location;
     }
 

@@ -37,6 +37,8 @@ public class upload_to_database {
                                                         break;
                 case "check_key_from_socket_database"   :check_key_from_socket_database(data);
                                                         break;
+                case "socket_read"                      :socket_read(data);
+                                                        break;
             }
 
             c.commit();
@@ -68,21 +70,33 @@ public class upload_to_database {
     }
 
     public void signup(String data){
+
         String email        = split(data)[0];
         String password    = split(data)[1];
 
+
         try{
+
+
+
             String sql = "INSERT INTO user_info (EMAIL, PASSWORD) " +
-                    "VALUES ("+email+","+password+");";
+                    "VALUES ('"+email+"','"+password+"');";
             stmt.executeUpdate(sql);
+
+
+            System.out.println("here");
 
             sql = "CREATE TABLE "+email+" " +
                     "(D_KEY TEXT PRIMARY KEY     NOT NULL," +
                     " D_NAME           TEXT    NOT NULL)";
+
+            System.out.println(sql);
+
             stmt.executeUpdate(sql);
 
             result = "Successfully created account !!!";
         }catch(SQLException e) {
+            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
             if (e.getMessage().contains("UNIQUE constraint failed")) {
                 result = "Account already existed !!!";
             }
@@ -121,7 +135,7 @@ public class upload_to_database {
                 result = "Device Added";
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
             result = "Device not available";
         }
     }
@@ -144,24 +158,18 @@ public class upload_to_database {
             stmt.executeUpdate(sql);
             result = "Success";
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
         }
     }
 
-    private String[] split(String data){
-        int split_1, split_2 = 0, element=0;
-        String[] result = null;
+    public void socket_read(String data){
+        String device_key = split(data)[0];
 
-        for(int i=0; i < data.length(); i++){
-            if(data.indexOf(i) == '&'){
-                split_1 = split_2;
-                split_2 = i;
-                char[] c = new char[split_2-split_1-1];
-                data.getChars(data.indexOf(split_1)+1,data.indexOf(split_2),c,0);
-                result[element] = String.copyValueOf(c);
-                element ++ ;
-            }
-        }
-        return result;
+    }
+
+    private String[] split(String data){
+        String[] output = data.split("&");
+        System.err.println(output[0]);
+        return output;
     }
 }

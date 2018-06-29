@@ -32,9 +32,11 @@ public class signup implements HttpHandler {
 
         if (requestMethod.equalsIgnoreCase("GET")){
             if(successful_signup_flag!=null){
-                p.error(successful_signup_flag, "danger", 3);
+                System.out.println(successful_signup_flag);
+                p.error(successful_signup_flag, "danger", 2);
+
             }else{
-                p.page(3);
+                p.page(2);
             }
             successful_signup_flag = null;
         }
@@ -58,10 +60,13 @@ public class signup implements HttpHandler {
         String data = null;
         upload_to_database u = new upload_to_database();
 
+
+
         while(true){
             try{
                 data = data_collect_buffer.readLine();
-                if(data.chars().filter(ch -> ch == '&').count() == 2){
+                if(data.chars().filter(ch -> ch == '&').count() == 1){
+
                     successful_signup_flag = u.upload_data(u.user_db_file_name,data,"signup");
                     break;
                 }

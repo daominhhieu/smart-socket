@@ -29,7 +29,7 @@
 
 /* Add a green text color and a checkmark when the requirements are right */
 .valid {
-    color: green;
+    color: cyan;
 }
 
 .valid:before {
@@ -40,7 +40,7 @@
 
 /* Add a red text color and an "x" when the requirements are wrong */
 .invalid {
-    color: red;
+    color: white;
 }
 
 .invalid:before {
@@ -63,7 +63,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
 
-      <link rel="stylesheet" href="/signup_css/" />
+      <link rel="stylesheet" href="https://storage.googleapis.com/teleproject/signup.css" />
 </head>
 
 <body>
@@ -83,16 +83,16 @@
         </div>
         <div id="navbarMenuHeroA" class="subtitle navbar-menu">
           <div class="navbar-end">
-            <a class="navbar-item ">
+            <a class="navbar-item " href="/">
               Home
             </a>
-            <a class="navbar-item " href="">
+            <a class="navbar-item " href="/login/">
               Login
             </a>
-            <a class="navbar-item " href="">
+            <a class="navbar-item " href="/signup/">
               Sign Up
             </a>
-            <a class="navbar-item" href="#About">
+            <a class="navbar-item" href="/">
               About
             </a>
           </div>
@@ -109,7 +109,7 @@
                         <form>
                             <div class="field">
                                 <div class="control has-icons-left has-icons-right">
-                                    <input class="input is-large" type="email" placeholder="Email" autofocus="" id="email" >
+                                    <input class="input is-large" type="text" placeholder="Email" id="email" >
                                       <span class="icon is-left">
                                           <i class="fas fa-envelope"></i>
                                       </span>
@@ -122,7 +122,7 @@
 
                             <div class="field">
                                 <div class="control has-icons-left has-icons-right ">
-                                    <input class="input is-large " type="password" placeholder="Password" id="psw" name="psw"  required>
+                                    <input class="input is-large " type="password" placeholder="Password" id="psw">
                                     <span class="icon is-left">
                                         <i class="fas fa-lock"></i>
                                     </span>
@@ -134,7 +134,7 @@
 
                             <div class="field">
                                 <div class="control has-icons-left has-icons-right ">
-                                    <input class="input is-large " type="password" placeholder="Repeat Password" id="psw-repeat" name="psw-repeat" required>
+                                    <input class="input is-large " type="password" placeholder="Repeat Password" id="psw-repeat">
                                     <span class="icon is-left">
                                         <i class="fas fa-lock"></i>
                                     </span>
@@ -144,15 +144,8 @@
                                 </div>
                             </div>
 
-                            <div class="field">
-                                <label class="checkbox">
-                                    <input type="checkbox">
-                                      Remember me
-                                </label>
-                            </div>
-                                <button class="button is-block is-focused is-warning is-large is-fullwidth " onclick="loadInfo()">Submit</button>&nbsp;
-                            <a href="signup.html">
-                                <button class="button is-block is-success is-bold is-focused is-fullwidth is-info is-large">Cancel</button> </a>
+                                <button class="button is-block is-focused is-warning is-large is-fullwidth " onclick="loadInfo()">Submit</button>
+                                <a class="button is-block is-success is-bold is-focused is-fullwidth is-info is-large" href="/">Cancel</a>
                         </form>
                     </div>
                 </div>
@@ -177,112 +170,109 @@
     </section>
 
     <script>
-    var myInput = document.getElementById("psw");
-    var nam123 = document.getElementById("psw-repeat");
-    var letter = document.getElementById("letter");
-    var capital = document.getElementById("capital");
-    var number = document.getElementById("number");
-    var length = document.getElementById("length");
+        var email = document.getElementById("email");
+        var password = document.getElementById("psw");
+        var re_password = document.getElementById("psw-repeat");
+        var letter = document.getElementById("letter");
+        var capital = document.getElementById("capital");
+        var number = document.getElementById("number");
+        var length = document.getElementById("length");
 
-    // When the user clicks on the password field, show the message box
-    myInput.onfocus = function() {
-        document.getElementById("message").style.display = "block";
+        // When the user clicks on the password field, show the message box
+        password.onfocus = function() {
+            document.getElementById("message").style.display = "block";
+        }
+
+        // When the user clicks outside of the password field, hide the message box
+        password.onblur = function() {
+            document.getElementById("message").style.display = "none";
+        }
+
+        // When the user starts to type something inside the password field
+        password.onkeyup = function() {
+          // Validate lowercase letters
+          var lowerCaseLetters = /[a-z]/g;
+          if(password.value.match(lowerCaseLetters)) {
+            letter.classList.remove("invalid");
+            letter.classList.add("valid");
+          } else {
+            letter.classList.remove("valid");
+            letter.classList.add("invalid");
+          }
+
+          // Validate capital letters
+          var upperCaseLetters = /[A-Z]/g;
+          if(password.value.match(upperCaseLetters)) {
+            capital.classList.remove("invalid");
+            capital.classList.add("valid");
+          } else {
+            capital.classList.remove("valid");
+            capital.classList.add("invalid");
+          }
+
+          // Validate numbers
+          var numbers = /[0-9]/g;
+          if(password.value.match(numbers)) {
+            number.classList.remove("invalid");
+            number.classList.add("valid");
+          } else {
+            number.classList.remove("valid");
+            number.classList.add("invalid");
+          }
+
+          // Validate length
+          if(password.value.length >= 8) {
+            length.classList.remove("invalid");
+            length.classList.add("valid");
+          } else {
+            length.classList.remove("valid");
+            length.classList.add("invalid");
+          }
+        }
+
+
+
+
+
+
+
+
+        /*fasdfasfadsfaaaaaaaaaaaa*/
+
+        re_password.onfocus = function() {
+            document.getElementById("message1").style.display = "block";
+        }
+
+        // When the user clicks outside of the password field, hide the message box
+        re_password.onblur = function() {
+            document.getElementById("message1").style.display = "none";
+        }
+
+
+        re_password.onkeyup = function() {
+
+        if(re_password.value.toString() == password.value.toString())
+        {
+          match.classList.remove("invalid");
+          match.classList.add("valid");
+        } else {
+          match.classList.remove("valid");
+          match.classList.add("invalid");
+        }
     }
 
-    // When the user clicks outside of the password field, hide the message box
-    myInput.onblur = function() {
-        document.getElementById("message").style.display = "none";
-    }
+    function loadInfo() {
+        var xhttp = new XMLHttpRequest();
+        var xhhtp_mainpage = new XMLHttpRequest();
+        xhhtp_mainpage.open("POST", "http://localhost:8080/signup/", true);
 
-    // When the user starts to type something inside the password field
-    myInput.onkeyup = function() {
-      // Validate lowercase letters
-      var lowerCaseLetters = /[a-z]/g;
-      if(myInput.value.match(lowerCaseLetters)) {
-        letter.classList.remove("invalid");
-        letter.classList.add("valid");
-      } else {
-        letter.classList.remove("valid");
-        letter.classList.add("invalid");
+        xhttp.open("POST", "http://localhost:8082", true);
+        xhttp.setRequestHeader("Content-type", "text/plain");
+
+        xhhtp_mainpage.send();
+        xhttp.send(email.value.toString()+"&"+password.value.toString());
+
       }
-
-      // Validate capital letters
-      var upperCaseLetters = /[A-Z]/g;
-      if(myInput.value.match(upperCaseLetters)) {
-        capital.classList.remove("invalid");
-        capital.classList.add("valid");
-      } else {
-        capital.classList.remove("valid");
-        capital.classList.add("invalid");
-      }
-
-      // Validate numbers
-      var numbers = /[0-9]/g;
-      if(myInput.value.match(numbers)) {
-        number.classList.remove("invalid");
-        number.classList.add("valid");
-      } else {
-        number.classList.remove("valid");
-        number.classList.add("invalid");
-      }
-
-      // Validate length
-      if(myInput.value.length >= 8) {
-        length.classList.remove("invalid");
-        length.classList.add("valid");
-      } else {
-        length.classList.remove("valid");
-        length.classList.add("invalid");
-      }
-    }
-
-
-
-
-
-
-
-
-    /*fasdfasfadsfaaaaaaaaaaaa*/
-
-      nam123.onfocus = function() {
-        document.getElementById("message1").style.display = "block";
-    }
-
-    // When the user clicks outside of the password field, hide the message box
-      nam123.onblur = function() {
-        document.getElementById("message1").style.display = "none";
-    }
-
-
-      nam123.onkeyup = function() {
-
-    if(nam123.value.toString() == myInput.value.toString())
-    {
-      match.classList.remove("invalid");
-      match.classList.add("valid");
-    } else {
-      match.classList.remove("valid");
-      match.classList.add("invalid");
-    }
-}
-
-function loadInfo() {
-    var xhttp = new XMLHttpRequest();
-    var xhhtp_mainpage = new XMLHttpRequest();
-    var username = document.getElementById("email").value.toString();
-    var password = document.getElementById("psw").value;
-    var password_repeat = document.getElementById("psw-repeat").value;
-    xhhtp_mainpage.open("GET", "http://localhost:8080/signup/", true);
-
-    xhttp.open("POST", "http://localhost:8082", true);
-    xhttp.setRequestHeader("Content-type", "text/plain");
-
-    xhhtp_mainpage.send();
-    xhttp.send("su="+username+"&sp="+password);
-
-    location = location;
-  }
 
 
 
